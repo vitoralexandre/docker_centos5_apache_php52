@@ -1,1 +1,1 @@
-# Docker CentOS 5 with Apache and PHP 5.2
+# Docker CentOS 6 with Apache and PHP 5.3
