@@ -1,0 +1,10 @@
+/var/log/httpd/*log {
+    daily
+    rotate 365
+    notifempty
+    sharedscripts
+    compress
+    postrotate
+        /usr/sbin/apachectl restart > /dev/null 2>/dev/null || true
+    endscript
+}
