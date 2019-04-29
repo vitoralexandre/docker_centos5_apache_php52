@@ -38,5 +38,10 @@ ADD conf/suphp.conf /etc/httpd/conf.d/suphp.conf
 ADD conf/rotate_httpd  /etc/logrotate.d/httpd
 ADD conf/ssl.conf /etc/httpd/conf.d/ssl.conf
 
+# Creating template files
+RUN mkdir /opt/templates 
+ADD conf/vhost.conf /opt/templates/vhost.conf
+ADD conf/vhost_ssl.conf /opt/templates/vhost_ssl.conf
+
 CMD ["/usr/sbin/apachectl start && postfix start"]
 
