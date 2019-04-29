@@ -1,6 +1,14 @@
 FROM centos:6
 MAINTAINER vitor.alexandre.tec.info@gmail.com 
 
+# Volumes 
+volumes:
+  - /opt/templates:/opt/templates
+  - /var/log/httpd:/var/log/httpd
+  - /etc/passwd:/etc/passwd
+  - /etc/shadow:/etc/shadow
+  - /etc/group:/etc/group
+
 # Installing epel
 RUN yum install -y epel-release
 
