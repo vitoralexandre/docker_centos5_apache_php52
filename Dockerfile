@@ -1,14 +1,6 @@
 FROM centos:6
 MAINTAINER vitor.alexandre.tec.info@gmail.com 
 
-# Volumes 
-volumes:
-  - /opt/templates:/opt/templates
-  - /var/log/httpd:/var/log/httpd
-  - /etc/passwd:/etc/passwd
-  - /etc/shadow:/etc/shadow
-  - /etc/group:/etc/group
-
 # Installing epel
 RUN yum install -y epel-release
 
@@ -42,7 +34,7 @@ RUN rm -f /etc/httpd/conf.d/ssl.conf
 # Adding Confs 
 ADD conf/etc_suphp.conf /etc/suphp.conf
 ADD conf/httpd.conf /etc/httpd/conf/httpd.conf
-ADD conf/suphp.conf /etc/httpd/conf.d/suphp.conf
+ADD conf/httpd_suphp.conf /etc/httpd/conf.d/suphp.conf
 ADD conf/rotate_httpd  /etc/logrotate.d/httpd
 ADD conf/ssl.conf /etc/httpd/conf.d/ssl.conf
 

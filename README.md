@@ -52,13 +52,10 @@ SSL hosts uses file /opt/templates/vhost_ssl.conf and set SSL path is necessary.
 ## Usage
 - With host network: 
 ```
-docker run -it -d --restart=unless-stoped --network=host --name NAME IMAGENAME 
+docker run -it -d --restart=unless-stoped --network=host -v /opt/templates:/opt/templates -v /var/log/httpd:/var/log/httpd --mount type=bind,source=/etc/passwd,target=/etc/passwd --mount type=bind,source=/etc/shadow,target=/etc/shadow --mount type=bind,source=/etc/group,target=/etc/group --name NAME IMAGENAME 
 ```
 
 - With port bind: 
 ```
-docker run -it -d --restart=unless-stoped -p 80:80 -p 443:443 --name NAME IMAGENAME
+docker run -it -d --restart=unless-stoped -p 80:80 -p 443:443 -v /opt/templates:/opt/templates -v /var/log/httpd:/var/log/httpd --mount type=bind,source=/etc/passwd,target=/etc/passwd --mount type=bind,source=/etc/shadow,target=/etc/shadow --mount type=bind,source=/etc/group,target=/etc/group --name NAME IMAGENAME
 ```
-
-All volumes was mounted on Dockerfile. 
-
