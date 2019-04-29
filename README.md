@@ -23,4 +23,28 @@ mkdir /var/log/httpd
 docker build -t NAME . 
 ```
 
+## Creating VHOSTs
+- Add user and change password:
+```
+useradd FTPUSER
+passwd FTPUSER
+```
 
+- Copy template and edit it: 
+```
+cp -pavu /opt/templates/vhost.conf /tmp/DOMAIN.conf
+sed -i "s/DOMAIN/domain.name/g" /tmp/DOMAIN.conf
+sed -i "s/USER/ftpuser/g" /tmp/DOMAIN.conf 
+sed -i "s/GROUP/ftpuser/g" /tmp/DOMAIN.conf 
+mkdir -p /virtual/domain.name/www 
+chown -R ftpuser.ftpuser /virtual/domain.name 
+docker cp /tmp/DOMAIN.conf CONTAINERNAME:/etc/httpd/conf.d/
+docker exec -it CONTAINERNAME apachectl -t 
+```
+
+If everything is ok, then: 
+```
+docker exec -it CONTAINERNAME apachectl graceful
+```
+
+SSL hosts uses file /opt/templates/vhost_ssl.conf and set SSL path is necessary. 
