@@ -48,3 +48,17 @@ docker exec -it CONTAINERNAME apachectl graceful
 ```
 
 SSL hosts uses file /opt/templates/vhost_ssl.conf and set SSL path is necessary. 
+
+## Usage
+- With host network: 
+```
+docker run -it -d --restart=unless-stoped --network=host --name NAME IMAGENAME 
+```
+
+- With port bind: 
+```
+docker run -it -d --restart=unless-stoped -p 80:80 -p 443:443 --name NAME IMAGENAME
+```
+
+All volumes was mounted on Dockerfile. 
+
