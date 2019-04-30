@@ -4,6 +4,9 @@ MAINTAINER vitor.alexandre.tec.info@gmail.com
 # Installing epel
 RUN yum install -y epel-release
 
+# Installing RPMforge 
+RUN yum install -y http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm 
+
 # Updating 
 RUN yum update -y 
 

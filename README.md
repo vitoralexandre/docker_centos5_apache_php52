@@ -24,6 +24,12 @@ mkdir /opt/templates
 mkdir /var/log/httpd
 ```
 
+- Add user and group to your files: 
+```
+echo "apache:x:48:" >> /etc/group 
+echo "apache:x:48:48:Apache:/var/www:/sbin/nologin" >> /etc/passwd
+```
+
 - Build Dockerfile 
 ```
 docker build -t NAME . 
