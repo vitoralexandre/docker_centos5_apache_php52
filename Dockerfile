@@ -11,7 +11,7 @@ RUN yum update -y
 RUN yum install -y wget links
 
 # Installing Apache 
-RUN yum install -y httpd
+RUN yum install -y httpd mod_ssl
 
 # Installing PHP, libs em modules
 RUN yum install -y php php-gd php-imap php-mysql php-pgsql php-mssql php-soap php-xml php-pdo php-mcrypt php-mbstring php-pear php-cli php-process php-intl php-pecl-memcache mod_suphp
@@ -43,5 +43,4 @@ RUN mkdir /opt/templates
 ADD conf/vhost.conf /opt/templates/vhost.conf
 ADD conf/vhost_ssl.conf /opt/templates/vhost_ssl.conf
 
-CMD ["/usr/sbin/apachectl", "start", ";", "postfix", "start"] 
-
+CMD ["httpd", "-DFOREGROUND"]
