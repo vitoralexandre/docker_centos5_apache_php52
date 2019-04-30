@@ -43,5 +43,5 @@ RUN mkdir /opt/templates
 ADD conf/vhost.conf /opt/templates/vhost.conf
 ADD conf/vhost_ssl.conf /opt/templates/vhost_ssl.conf
 
-CMD ["/usr/sbin/apachectl start && postfix start"]
+CMD ["/usr/sbin/apachectl", "start", ";", "postfix", "start"] 
 
